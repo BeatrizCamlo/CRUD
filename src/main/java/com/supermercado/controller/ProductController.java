@@ -23,10 +23,12 @@ public class ProductController {
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
-    @PostMapping("/{id}")
+
+    @PutMapping ("/update")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
         return productService.getProductById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build()).getBody();
     }
+
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
